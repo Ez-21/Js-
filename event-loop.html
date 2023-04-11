@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 事件循环
+    // console.log(1)
+    // new Promise((res,rej)=>{
+    //     console.log(2)
+    //     res()
+    // }).then(()=>{
+    //     console.log(3)
+    // }).finally(()=>{
+    //     console.log(4)
+    // })
+    // setTimeout(()=>{
+    //     console.log(5)
+    // },2000)
+    // console.log(6)
+
+//    js代码是自上而下执行 
+//    js中又分为 同步任务与异步任务
+    //同步任务就是主线程js代码   异步任务不进入主线程并且又分为 宏任务与微任务
+    // '以下不包括Node事件'
+    //微任务包含 Promise.then catch finally  MutationObserver(检测dom变动Api) async await
+    //宏任务包含 script  ajax请求  setTimeout setInterval Dom事件  UI渲染 
+
+    // 执行顺序>>
+    // Js 遇到同步代码立即执行  遇到异步宏任务代码 放入宏任务队列 遇到微任务则放入微任务队列 等待所有同步代码执行完毕后
+    // 清空执行微任务队列  然后执行宏任务 然后再检查微任务队列是否存在微任务 如果有则执行 没有则继续执行宏任务
+    // 这个循环过程叫做 事件循环
+
+
+
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+    </div>
+</body>
+
+</html>
+<script>
+    // Es6
+    // let var const 声明变量与常量的方式‘
+    // let 与 const 声明的数据 具有暂时性死区 不能在未声明前使用
+    // let 关键字声明的变量只在当前作用域可以使用  
+    // let 与 const 不存在变量提升 必须声明并且赋值后使用
+    // let 变量不允许在同一作用域下重复声明
+    var one = 1
+    let two = 2
+    const three = 3
+    let four
+    {
+        let a = 00
+        var b = 20
+    }
+    for (let i = 0; i < 5; i++) {
+        // console.log(i);
+    }
+    // console.log(i); a is not defined 因为受制于块级作用域限制
+    for (var key = 0; key < 10; key++) {
+        // console.log(key);
+    }
+    // console.log(key); 10 跳出循环时已自增一次  外部可以访问这个变量  
+
+    // for 循环写法 中存在两个分隔的作用域 条件体与逻辑体 是不同的作用域 以下可以证实！
+    for (let val = 0; val < 5; val++) {
+        // 再次使用let 声明val 变量
+        let val = '距离'
+        console.log(val); // 打印为距离 未报错 所以具有两个单独作用域 不存在变量冲突
+    }
+
+    //变量的解构赋值
+    // 解构时可以设置变量的默认值
+    var { name, sex: gender, age = 24 } = {
+        name: '钱宗泽',
+        sex: '男'
+    }
+    function move({ x, y } = { x: 100, y: 200 }) {
+        console.log(x, y);
+    }
+    function moff({ x = 0, y = 0 } = {}) {
+
+    }
+    // 模板字符串
+    var str = `我的名字是${name}${new Date().toLocaleDateString().split('/').join('-')}`
+    function saySome(name) {
+        return `${name}就是最屌的！`
+    }
+    let bullshit = saySome('钱宗泽')
+
+    // 数值
+    let save = isFinite(100)
+    let nas = isNaN(200)
+    let int = Number.isInteger(102.7)
+    // console.log(save);
+    // console.log(nas);
+    // console.log(int);
+
+
+    // 函数
+    // 函数参数默认值
+    // 如果设置了默认值的参数不是尾参数，那么length属性也不再计入后面的参数了。
+    function foo(x = 100, y, ...z) {
+    }
+    foo()
+    // console.log(foo.length,'函数length')  length:0
+
+
+    // 数组
+    var test = [1, 2, 3, 4, 5]
+    console.log(test.toReversed());
+    console.log(Reflect.ownKeys({}));
+    var obj = {
+        say() {
+        }
+    }
+    Object.defineProperty(obj, 'name', {
+        value: '钱宗泽',
+        enumerable: false
+    }
+    )
+    //    ...是遍历可枚举属性！！！
+    // async 函数
+    var asy = async function () {
+        await new Promise((res, rej) => {
+            setTimeout(() => {
+                console.log(1)
+                res()
+            }, 1000)
+        })
+        await console.log(2)
+    }
+    // asy()
+    let resvole = Promise.resolve(setTimeout(()=>{
+        console.log('promise');
+    },100))
+    let ress = Promise.reject(100)
+    Promise.allSettled([ress]).then(res=>{
+        console.log(res[0].reason)
+    })
+    
+</script>

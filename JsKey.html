@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* div:empty::after {
+        content: '没有数据啊';
+        display: block;
+        text-align: center;
+        line-height: 100px;
+        background-color: aqua;
+    } */
+</style>
+
+<body>
+    <div class="Box">
+        等不到天黑
+    </div>
+</body>
+
+</html>
+<script>
+    // Js重点难点
+    // js中的数据类型
+    // 简单数据类型： string number boolean Symbol Bigtint null undefind
+    // 复杂数据类型： Object  function
+    // 检测数据类型
+    var str = '我是字符串'
+    var num = 100
+    var nul = null
+    var unde = undefined
+    var syl = Symbol('你好')
+    var bad = false
+    var obj = {
+        name: '钱宗泽',
+        sex: "男",
+        color: 'black'
+    }
+    var arr = [1, 2, 3, 4, 5]
+    function fun(a, b = 100, ...rest) {
+        console.log(fun.caller);
+    }
+    // 简单类型使用typeof 进行类型检测
+    // 复杂类型使用instancdeof 进行类型检测  判断右侧值的显式原型是否在左侧的原型链上
+    // 或者使用Object.toString.call()对类型进行更准确的检测
+    console.log(obj instanceof Object)
+    console.log(arr instanceof Object)
+    console.log(Object.prototype.toString.call(null))
+
+    // 字符串 String 和它的方法
+    // 因为字符串是可迭代的所以可以使用展开符...
+    // console.log(...str)
+    // console.log(str.__proto__)
+    // 字符串含有 slice split trim trimLeft trimRight padStrat padEnd substr substring startsWidth endsWith at charAt search indeof
+
+    //数组
+    // 检测是否为数组的方法 和 它的方法
+    // console.log(Array.isArray(arr))
+    // 数组含有 map foreach reduce filter find findLastIndex join some every indeof fill flat flatMap concat at reduceRight pop shift push unshift
+    // slice  splice reverse
+
+    // 对象
+    //  可以使用delete 删除对象中的属性
+    // assign defineProperty setPrototypeOf isPrototype hasOwn defeinePropertyies  freeze seal isSeal isFrozen is keys values entries
+    // getPrototypeOf
+    // let descriptors = Object.getOwnPropertyDescriptors(obj)
+    // console.log(descriptors,'属性描述')
+
+    // 函数
+    // 函数中的arguments 是一个接收实参的类数组对象 不接收参数默认值
+    // 函数的caller 属性指向调用函数的函数
+    // 函数的length属性 是函数内不含有默认值的参数的个数
+
+    // 小Tips!!
+    // let params = Object.fromEntries(new URL(location.href).searchParams)
+
+    // JS重点难点
+    // 变量提升、
+    // 深浅拷贝
+    // var boss = {
+    //     name:'老板',
+    //     sex:undefined,
+    //     age:20,
+    //     assole:[1,2,3,4,5]
+    // }
+    // var bess = {...boss}
+    // bess.name='董事长'
+    // bess.assole=undefined
+    // console.log(bess);
+    // console.log(boss);
+
+    // 防抖与节流
+    //  防抖 只执行最后一次触发的事件
+    //  节流  固定时间间隔执行 
+
+    //class 类
+    class Room {
+        #mate = '小王'
+        constructor(name, sex) {
+            this.name = name
+        }
+        say() {
+            console.log(this.#mate)
+            console.log(this.name)
+        }
+    }
+    class Dats extends Room {
+        constructor(xx) {
+            super()
+            this.name = xx
+        }
+        talk() {
+        }
+    }
+    var person = new Room('钱宗泽', '男')
+    var people = new Dats('鱼丸粗面')
+    // 判断元素是否出现在视口
+    var show = new IntersectionObserver((val)=>{
+        val.forEach(item=>{
+            console.log(item)
+            if(item.isIntersecting){
+                console.log('出现了')
+            }
+        })
+    })
+var box = [...document.querySelectorAll('.Box')] 
+console.log(box);
+box.forEach((div)=>show.observe(div))
+
+
+</script>

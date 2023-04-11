@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+button{
+    all: unset;
+}
+</style>
+
+<body>
+
+</body>
+
+</html>
+<script>
+// this 指向的4中规则
+// 默认绑定 隐式绑定 显式绑定  new绑定
+
+// // 默认绑定就是 函数独立调用时  this指向window
+// function fun(){
+//     console.log(this)
+// }
+
+// fun()
+
+// 隐式绑定 就是检测函数调用时是否有存在上下文对象
+// const obj = {
+//     fun(){
+//         console.log(this)
+//     }
+// }
+// obj.fun()
+
+// 显式绑定 是使用 apply bind call 方法手动强制传入this对象的方式进行绑定 
+// 注意 使用这三个方法时 传入 空参数  null  undefined 则this会指向window!! 
+// var obj = {
+//     fun(){
+//         console.log(this)
+//     }
+// }
+
+// obj.fun.apply()
+
+// new 绑定  使用new 实例化构造函数 会将this 绑定到实例化对象上
+// class Box{
+//     constructor(){
+        
+//     }
+//     say(){
+//         console.log(this)
+//     }
+// }
+// var box = new Box()
+// box.say()
+</script>
