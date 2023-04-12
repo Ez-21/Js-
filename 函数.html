@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 函数篇
+
+    // 函数的声明方式 
+    // 1.function fun(){}
+    // 2.var fun = function(){}
+    // 3.var fun = ()=>{}
+    // 4.没有返回值的函数 值为undefined
+    // 5.函数参数可以具有默认值 默认值不算在arguments中
+
+    // 函数参数与对象的解构赋值结合使用
+    // 1.解构赋值没有解构到则会返回undefined
+    // function fun({ x, y = 100 }) {
+    //     console.log(x,y);
+    // }
+
+    // 这个写法是 将解构赋值与参数默认值相结合达到双重默认值,参数内部属性与参数都具有默认值
+    // 先对参数进行解构 如果不存在参数 就使用默认值 不要被写法杂乱而迷惑！
+//      function fun(name, { url = 'http://www.baidu.com', method, params } = {}) {
+//         const ajax = new XMLHttpRequest()
+//         let value = undefined
+//         ajax.onreadystatechange =  (e) => {
+//             if (ajax.status == 200 && ajax.responseText) {
+//                 value = JSON.parse(ajax.responseText)
+//                 console.log(value);
+//             }
+//         }
+//         ajax.open(method, url)
+//         ajax.send()
+
+//     }
+//    fun('钱宗泽', { url: 'http://jsonplaceholder.typicode.com/posts/2', method: 'get' })
+
+    // function a({x=1,y=2}={}){
+    //     console.log([x,y]);
+    // }
+    // function b({x,y}={x:1,y:2}){
+    //     console.log([x,y]);
+    // }
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 对象篇
+    var obj = {
+        name: '钱宗泽',
+        age: 24,
+        sex: '男',
+        hobby: ['music', 'movie', 'game'],
+        sing() {
+            console.log('恨幸福来过');
+        },
+    }
+    obj.__proto__.color='black'
+    // 获取对象的属性的两种方式：1：.方法, 2：obj['key']
+    // Object.keys(obj) 获取对象的所有属性名 返回值为数组
+    // Object.values(obj)获取对象的所有属性值 返回值为数组 
+    // Object.entries(obj)将键值对已数组的形式包裹 返回值为二维数组
+    // Object.is() 深比较两个值是否相等
+    // Object.defineProperty(obj,'keyName',options) 可以设置对象中某个属性的属性描述符  如果设置 set/get 就不能设置 默认值与wirtable
+    // Object.defienProperties(obj,options) 可以设置对象中所有属性的属性描述符
+    // Object.setPrototypeOf(x,y) 将第二个参数 设置为第一个参数的原型
+    // Object.create(proto) 将proto作为返回对象的原型
+    // Object.hasOwn(obj,'keyName') 同 Object.hasOwnProperty() 判断对象中是否存在该属性
+    // Object.freeze() 冻结对象 对象不能删除 修改 新增属性
+    // Object.seal()密封对象 对象不能删除 新增 但可以修改属性
+    // Object.preventExtensions 使对象不可扩展 不能新增属性和方法  可以删除与修改
+    // Object.isFrozen() 判断是否冻结
+    // Object.isSeal() 判断是否密封
+    // Object.isExtensible() 判断是否不可扩展
+    // Object.getPrototypeOf() 获取对象的原型
+    // Object.fromEntries() 将键值对数组装换为一个对象
+    // Object.getOwnPropertyDescriptor(obj,'keyName') 获取对象中属性的属性描述符
+    // Object.getOwnPropertyDescriptors(obj) 获取对象中所有属性的属性描述符
+    // Object.getOwnPropertyNames(obj) 获取对象本身且不包含原型链上的属性 返回一个数组 与object.keys() 不同的是keys方法不返回不可枚举属性
+    // Object.getOwnPropertySymbols()返回对象中的symbol属性 集合的数组
+    // in 运算符 判断是否为对象中的属性 检索至原型
+</script>

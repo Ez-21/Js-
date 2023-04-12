@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 数组篇
+    var arr = [{ label: '第一', id: 1 }, { label: '第二', id: 2 }, { label: '第三', id: 3 }]
+    // 数组的所有方法
+    // push 从尾部插入一个元素 直接影响原数组  返回值是 数组的长度
+    // arr.push({ label: '第四', id: 4 })
+    // pop  从尾部删除一个元素 直接影响原数组  返回值是末尾元素
+    // arr.pop()
+    // shift 从头部删除一个元素 直接影响原数组 返回值是头部元素
+    // arr.shift()
+    // unshift 从头部添加一个元素 直接影响原数组 返回值是数组长度
+    // arr.unshift({ label: '第五', id: 5 })
+    // at(index) 返回数组中第index位置的元素
+    // join() 将数组已参数作为分隔符分割 并返回字符串
+    // console.log(arr.join(",[],"));
+    // indexOf(item) 返回找到的第一个该元素的索引
+    // with(index,item) 返回一个将数组的index位置的元素替换成item的新数组 
+    // map((item,index,arr)=>{}) 循环方法 返回一个执行完参数函数的新数组 必须return 否则全部返回undefined 如何不加分支判断返回 会导致部分不符合元素为undefined
+    // forEach((item,index,arr)=>{}) 与map 作用相同  不同之处为forEach 不返回新数组 【元素为机泵类型时直接作用原数组】 也不分在元素undefined的情况
+    // every()对函数中的元素执行一次条件判断 必须全部为true才返回true 否则false
+    // some()写法与every()相同 不同为 只要有一个元素通过条件 即为true 否则false
+    // falt(num) 展平多维数组 参数num意思为展开层数
+    // faltMap() 展平多维数组并未其中元素全部执行参数方法 【只能展开一层！！】
+    // fill(item,start,eng) 填充数组 从开始位置到结束位置填充item 如果不设定索引 全部填充  【直接作用原数组】
+    // filter() 过滤数组 返回符合条件的元素数组
+    // find() 查找第一个符合条件的元素
+    // findIndex((item,index)=>index==0) 返回第一个满足条件的元素索引
+    // includes(item) 判断数组是否包含该元素
+    // copyWithin(newIndex,start,end) 将start 到 end 位置的元素 复制到newIndex 开始位置  不会修改原数组长度
+    // reverse() 反转数组  【直接作用原数组】
+    // keys() 返回一个迭代器 可以使用...扩展符 直接进行迭代 返回数组的索引
+    // values() 同keys() 返回数组中的元素
+    // entries() 返回一个由索引与对应元素的迭代器
+    // splice(start,num,newItem)  从开始位置删除num个元素 新增或不增newItem 返回删除的元素 【直接作用原数组】
+    // toString() 将数组转换为字符串
+    // slice(start,end) 截取数组从start 到 end 位置的元素 返回新数组 
+    // lastIndexOf() 为indexOf() 的不同版本  不同之处为从末尾开始查询
+    // reduce((lastVal=0,targetVal)=>{}) 累加器  lastVal 为上一次的返回结果  tartget为当前元素
+    // reduceRight((lastVal,tartgetVal,index,defindValue=默认开始值))
+    // concat(val)连接数组 将val 添加到数组末尾
+</script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // Promise 篇章
+    // promise 是为了解决异步问题而产生的的
+    var pro = new Promise((res, rej) => {
+        rej(100)
+    })
+    pro.then(undefined, (res) => {
+        console.log(res);
+    })
+    pro.catch(res => {
+        console.log(res)
+    })
+</script>
