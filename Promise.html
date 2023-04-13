@@ -16,13 +16,46 @@
 <script>
     // Promise 篇章
     // promise 是为了解决异步问题而产生的的
-    var pro = new Promise((res, rej) => {
-        rej(100)
-    })
-    pro.then(undefined, (res) => {
-        console.log(res);
-    })
-    pro.catch(res => {
-        console.log(res)
-    })
+
+    // promise.race(promise[]) 字面意思【赛跑】接收一个由promsie组成的数组  结果为数组中第一个promise状态结束的成功或失败的值
+
+    // Promise.race([Promise.reject(2),Promise.resolve(1), ]).then(res => {
+    //     console.log(res,'成功');
+    // }).catch(err => {
+    //     console.log(err, '失败')
+    // })
+
+    // promise.any(promise[]) 只要数组中有一个promise成功了 那他的结果值就是这个promsie的值 但是如果都失败了那他将返回一个错误实例 All promises were rejected
+    // Promise.any([Promise.resolve(true),Promise.reject(false)]).then((result) => {
+    //     console.log(result);
+    // }).catch((err) => {
+    //     console.log(err);
+    // });
+
+    // Promise.all(promise[]) any()的对立方法 如果内部promise都是resvole 的话结果是一个数组  但只要有一个reject 那么直接返回那个reject的值
+    // Promise.all([Promise.resolve(1),Promise.reject(2)]).then(res=>{
+    //     // console.log(res) [1,2] 结果数组
+    // }).catch((err)=>{
+    //     // console.log(err) 2  返回reject的值
+    // })
+
+    // Promise.allSettled(promsie[]) 当数组中所有promise全部执行完后 返回一个带有每个promise结果与状态的数组
+    // Promise.allSettled([Promise.reject(false),Promise.resolve(true)]).then(res=>{
+    //     console.log(res) 
+    // })
+   
+    // Promise.resolve 与 Promise.reject 都是返回一个 成功或失败的promsie对象 可以进行 then catch finally  方法
+
+
+    // async 与 await 
+    // 他们是promise的语法糖 
+    // async 可以将普通函数修饰为promise resolve状态
+    // await 必须放在 async 内的函数中  可以修饰promise 并且拿到他们的结果值 
+    // 必须等待 await修饰的的promise 得到返回值后 再继续执行代码 用来达到同步效果
+    // async function fun(){
+    //     var val = await Promise.resolve(500)
+    //     console.log(val);
+    // }
+    // fun() 500
+
 </script>
