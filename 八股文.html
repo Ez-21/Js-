@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    span {
+        color: cyan;
+    }
+
+    .content {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body>
+    <div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 普通函数与箭头函数的区别
+    // 1、箭头函数自身有没有this 它的this为父级作用域的this
+    // 2、箭头函数没有 arguments参数
+    // 3、箭头函数不能用作构造函数
+    // 4、箭头函数不能当做Generator函数
+    // 5、箭头函数没有原型
+    // 6、箭头函数语法更简洁
+    // 7、箭头函数中的this无法使用bind apply call 进行改变
+
+    // 对象超类
+    // 对象中可以使用super关键字 使用后 为对象绑定原型  可以使用原型上的方法
+
+    // let const var 区别
+    // var 具有变量提升  let const 没有
+    // var 生成的变量在同一作用域下多次重复声明  let和const 不可以
+    // var 声明的变量没有块级作用域
+    // var 声明的变量会作为window上的属性  
+    // let 和const 没有声明前不能使用  具有作用域死区   
+
+    //  JS基础进阶高级   
+    // 数据类型: string number boolean null undefined symbol bigint object 
+    // 判断数据类型
+    // typeof  判断简单数据类型
+    // instanceof 判断复杂数据类型
+    // Object.prototype.toString.call() 可以判断全数据类型
+
+    // js 字符串
+    var str = 'JavaScript中的字符串'
+    // 字符串具有length
+    // 结尾是否是
+    // console.log(str.endsWith('串'))
+    // 开头是否是
+    // console.log(str.startsWith('J'))
+    // 全局查询替换
+    // console.log(str.replaceAll('a','y'))
+    // 是否包含
+    // console.log(str.includes('a'))
+    // 截取 参数为 开始位置和个数
+    // console.log(str.substr(0,2));
+    // 截取 参数为 开始位置与结束位置
+    // console.log(str.substring(0,2))
+    // console.log(str.slice(0,2))
+    // 向前填充和 向后填充 参数为 字符串最终长度  与 填充字符串
+    // console.log(str.padStart(str.length+'等不到天黑'.length,'等不待天黑'))
+    // 清除空格
+    // console.log(str.trim())
+    // console.log(str.trimStart())
+    // console.log(str.trimEnd())
+
+    //js 数组
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    // 数组的遍历有几种形式
+    // for in  for of  map  reduce reduceRight filter find fineIndex some  every forEach
+    // for(let i in arr){
+    //     console.log(i)
+    // }
+    // for(let i = 0;i<arr.length;i++){
+    //     console.log(arr[i]);
+    // }
+    // for(let i of arr){
+    //     console.log(i);
+    // }
+    // 返回一个新数组
+    // var ass = arr.map((item,index)=>{
+    //     console.log('hahh')
+    // })
+    // 并不返回新数组
+    // var ass = arr.forEach((item,index)=>{
+    //     console.log('嘿嘿嘿');
+    // })
+    // 求和函数
+    // arr.reduce((pre,item,index)=>{
+    //     console.log(pre);
+    //     return item+arr[index+1]
+    // })
+    // 过滤filter 返回一个符合过滤条件的新数组
+    // var ass = arr.filter((item,index)=>{
+    //     return item<5
+    // })
+    // find 找到第一个符合条件的元素
+    // var ass = arr.find((item, index) => {
+    //     return item % 2 == 0
+    // })
+    //findIndex 找到第一个符合条件的元素的索引
+    // some() 数组中如果有一个元素符合条件就返回true
+    // every()数组中必须所有元素都符合条件才返回true
+
+    // 判断一个数组是否为数组
+    // console.log(Array.isArray(arr));
+    // 数组的方法
+    // push(val) 在数组尾部插入元素
+    // pop() 数组尾部弹出一个元素
+    // shift() 数组头部弹出一个元素
+    // unshift(val) 数组头部添加一个元素
+    // join() 使用指定分隔符 分割数组
+    // reverse() 颠倒数组
+    // splice(start,deleteCount,addVal) 操作原数组
+    // includes 是否包含该元素
+    // with(index,value) 返回一个新数组
+    // at(index)返回索引为index的元素 传入负数从数组尾部倒数
+
+    // JS 对象
+    var obj = {
+        name: '钱宗泽',
+        age: 18
+    }
+    // 获取对象的属性值两种方式
+    // 1 . 2.obj['name']
+    // 删除对象属性
+    // delete obj.name
+    // 获取对象的所有属性的描述符
+    // console.log(Object.getOwnPropertyDescriptors(obj));
+    // 获取对象的单个属性的描述符
+    // console.log(Object.getOwnPropertyDescriptor(obj,'name'));
+    // 获取对象的原型
+    // console.log(Object.getPrototypeOf(obj))
+    // 设置对象的原型
+    // Object.setPrototypeOf(obj,null)
+    // create 返回一个对象原型为null或者是参数的新对象
+    // var obs = Object.create(null)
+
+    // 修改对象属性的默认特性
+    // Object.defineProperty(obj,'name',{
+    //     enumerable:false, //不可遍历，
+    //     get(){
+    //         return '林俊杰'
+    //     }
+    // })
+    // 获取对象的所有属性值 返回一个数组
+    // console.log(Object.values(obj));
+    // 获取对象的所有属性返回一个数组
+    // console.log(Object.keys(obj))
+    // 获取一个键值对的二维数组
+    // console.log(Object.entries(obj));
+
+</script>
