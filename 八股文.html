@@ -14,17 +14,18 @@
 
     .content {
         width: 100px;
-        height: 100px;
+        height: 1200px;
     }
 </style>
 
 <body>
-    <div>
-    </div>
+    <div class="content"></div>
+    <img alt="请稍后" title="请稍后">
 </body>
 
 </html>
 <script>
+    const ck = document.querySelector('.ck2')
     // 普通函数与箭头函数的区别
     // 1、箭头函数自身有没有this 它的this为父级作用域的this
     // 2、箭头函数没有 arguments参数
@@ -125,6 +126,7 @@
     // includes 是否包含该元素
     // with(index,value) 返回一个新数组
     // at(index)返回索引为index的元素 传入负数从数组尾部倒数
+    // fill 填充数组 为数组内部填充同一个值 
 
     // JS 对象
     var obj = {
@@ -159,5 +161,299 @@
     // console.log(Object.keys(obj))
     // 获取一个键值对的二维数组
     // console.log(Object.entries(obj));
+
+    // 事件的触发默认顺序是冒泡！！
+    // addEventListener 第三个参数可以设置元素触发事件顺序是冒泡还是捕获
+
+    // 创建自定义事件
+    // 方法1 使用new Event('method') 创建自定义方法后使用dispatchEvent触发
+    // 方法2 使用createEvent('menthod')创建自定义方法后 再使用initEvent初始化 再使用dispatchEvent触发 （弃用）
+    // 方法3 customEvent 创建更细粒化的自定义事件 可以传入配置和自定义信息 元素监听该方法后 再使用dispatchEvent进行触发
+    // disPatchEvent自定义事件会自动触发回调函数！！
+
+    // 创建自定义html标签
+    // 先自定义一个标签
+    // class Hox extends HTMLElement {
+    //     constructor() {
+    //         super()
+    //     }
+    // }
+    // // 再自定义一个方法
+    // // var ckDom = new CustomEvent('click', {
+    // //     detail: {
+    // //         name: '我就是自定义事件',
+    // //         fk() {
+    // //             console.log('你他吗的在做什么啊');
+    // //         }
+    // //     }
+    // // })
+    // var ckDom = new Event('click')
+    // customElements.define('hox-x', Hox)
+    // const hox = document.createElement('hox-x')
+    // hox.addEventListener('click', (e) => {
+    //     console.log('进来了');
+    // })
+    // hox.dispatchEvent(ckDom)
+
+    // js难点
+
+    // 变量提升
+    // var 声明的变量会提升至当前作用域的顶部但不赋值
+    // var 变量会成为window的属性
+    // 函数提升优先于变量提升,若函数与变量同名,则会在变量赋值后覆盖
+
+    // 异步
+    // promise
+    // promise 内部本身是同步的  then catch  finally 是异步的
+
+    // async await 
+    // promise的语法糖
+    // async 将普通函数包装为promise await 后跟异步操作或promise  其返回值为promise 执行完毕的结果
+
+    // this
+    // this的指向分为 默认绑定  隐式绑定  显式绑定  new绑定
+
+    // 默认绑定
+    // 函数独立被调用时 this指向window
+    // function a(){
+    //     console.log(this);
+    // }
+    // a()//window
+
+    // 隐式绑定
+    // 检测函数调用时是否存在上下文对象
+    // var obj = {
+    //     name:'钱宗泽',
+    //     say(){
+    //         console.log(this.name)
+    //     }
+    // }
+    // obj.say()
+
+    // 显式绑定
+    // 使用bind apply call 方法手动更改this的指向
+    // obj.say.call(this)
+
+    // new 绑定
+    // 构造函数生成实例化对象时 会将this绑定到实例化对象上
+    // function Person(name){
+    //     this.name = name
+    //     this.say = function(){
+    //         console.log(this.name)
+    //     }
+    // }
+    // new Person('钱宗泽').say()
+
+    // 跨页面通信
+    // 使用posyMessage 传递信息   对应页面使用 监听messge事件 接收信息
+    // var target = window.open('http://127.0.0.1:5500/%E5%85%AB%E8%82%A1%E6%96%87.html')
+    // setTimeout((param) => {
+    //     target.postMessage('hello', '*')
+    // }, 1000 )
+    // window.addEventListener('message', (e) => {
+    //     console.log(e);
+    // })
+
+    // 深拷贝  浅拷贝
+    var arr = [1, { name: '钱宗泽' }, { name: '林俊杰' }]
+    var user = {
+        name: '钱宗泽',
+        color: undefined,
+        age: 25,
+        hobby: ['篮球', '足球'],
+        number: Infinity,
+        say() {
+            console.log('说点什么逼话')
+        }
+    }
+    // var brr = arr  浅拷贝 引用数据类型仅拷贝了同一个内存地址 修改数据都会改动
+    //  var brr =[...arr] ...运算符很特殊 如果内部属性值 或元素为引用数据类型  则为浅拷贝  如果为基本数据类型则为深拷贝
+
+    // 实现深拷贝
+    // 1：JSON.parse(JSON.stringify(val))
+    // 缺陷 会丢失函数与属性值为undefined 的属性  NaN infinity将转换为null
+
+    // 2: 手写实现deepClone
+    // var arr = [{name:'钱宗泽',age:25},[1,2,3,4,5]]
+    // function deepClone(val) {
+    //     var returnVal = Array.isArray(val) ? [] : {}
+    //     for (let key in val){
+    //         returnVal[key] = typeof val[key] === 'object' ? deepClone(val[key]) : val[key]
+    //     }
+    //    return returnVal
+    // }
+    // 函数的length 是参数个数 如果有参数默认值  则计算默认值参数前的参数个数
+
+    // 介绍一下js中的数据类型
+    // string number boolean undefined object BigInt symbol null
+
+    //  js中判断数据类型
+    // 基本数据类型 使用 typeof 进行判断
+    // 引用数据类型 使用instanceof 进行判断
+    // Object.Prototype.toString.call(val) 判断所有的数据类型
+    // 判断contsructor 判断数据的构造函数
+
+    // null 和 undefined 区别
+    // null 代表变量有值 值为空值
+    // undefined 代表变量声明了 还没赋值
+
+    // {} 和[] valueOf ,toString  的值是什么
+    // {}.valueOf = {} {}.toString = [object Object]
+    // [].valueOf = [] [].toString = ''
+
+    // 解释 作用域 与作用域链
+    // 作用域： 一个变量在程序中的有效访问范围
+    // 作用域链： 访问一个变量时如果在当前作用域中没有找到 就会向依次向上级作用域内查找 直到到达全局作用域 这个链式查询的过称就是作用域链
+
+    // js中创建对象的模式
+
+    // 工厂模式
+    // function createObj(name,age){
+    //    var obj = new Object()
+    //    obj.name = name
+    //    obj.age = age
+    //    return obj
+    // }
+
+    // 构造函数模式 
+    // function AddObj(name, age) {
+    //     this.name = name
+    //     this.age = age
+    // }
+    // var obj = new AddObj('钱宗泽', 25)
+
+    // 原型模式 将共用属性与方法放在一起
+    // 与构造函数模式不同之处是 原型对象上的属性与方法是共享的
+    // function AddObj() {
+
+    // }
+    // AddObj.prototype.id = 1
+    // AddObj.prototype.say = function () {
+
+    // }
+
+    // 谈谈this指向
+    // 在全局范围里 this指向是window
+    // 在有执行上下文对象的时候 this指向最后调用他的对象
+    // 在定时器中 this指向window
+    // 在构造函数中 this指向实例化出来的对象
+
+    // call bind apply 这三个方法可以手动更改this的指向
+    // call 和apply 的区别是 第二个参数  apply 接收一个参数数组  call 接收一堆散列参数
+    // bind 返回一个更改this指向的新函数
+
+    // 解释下js中的原型
+    //  构造函数中有一个prototype属性  这个属性值是一个对象 由这个构造函数实例化的对象可以共享里面的属性和方法 
+    //  实例化的对象 里有一个__proto__的属性  这是一个指针 指向了它的构造函数的原型对象
+
+    //原型链 
+    // 在一个对象中使用一个属性或者方法的时候会首先在自身内部查找 如果没有找到就向它的原型对象上查找如果还没有找到就在它的原型对象上还没找到 就继续向上一直找下去 这个就是原型链的概念
+
+    // js获取原型的方法
+    // 1 obj.__proto__
+    // 2 obj.constructor.prototype
+    // 3 Object.getPrototypeOf()
+
+    // 闭包是什么
+    // 闭包可以访问其他函数作用域中的变量
+
+
+    //是什么是冒泡和捕获
+    // 事件的触发顺序分为 冒泡和捕获
+    // 冒泡就是从 当前元素向上一次传播 ele=>father=>body=>html=>window
+    // 捕获就是从 window=>html=>body>father=>ele
+    // 可以使用addEverntListener()第三个参数控制元素捕获还是冒泡
+
+    // 事件委托
+    // 是因为 冒泡的存在  所以我们可以将 子节点的监听事件 绑定到父节点上 
+
+    // js中的数组对象字符串有哪些原生方法
+    // 数组有  push pop unshift shift map forEach every some  find findIndex filter  join splice reverse sort at with copyWithin
+    // 字符串有 splice substr substring trim trimleft trimright padStart padend toUpperCase tolowerCase includes  search 
+    // 对象有 Object.create Object.getPrototypeOf Object.setPrototypeOf Object.is Object.assgin Object.defineProperty Object.hasOwn()  Object.getOwnproperty() Object.isSeal Object.keys  Object.value Object.formEntries Object.freeze Object.isisFrozen
+
+    // arguments 是什么
+    // 函数的传参 是一个类数组对象
+
+    // var let const 
+    // var 声明的变量 会成为window上的属性
+    // var 可以在用意个作用域下重复声明同一个变量
+    // var 没有块级作用域 
+    // var 具有变量提升
+    // let 和 const 具有作用域死区 声明前不能使用
+    // let 不能在同一作用域下重复声明一个变量
+    // const 声明一个常量时必须赋值  常量不能被修改  但是如果是引用数据类型  可以修改数组内的元素 或者对象中的属性 因为常量固定的是一块内存地址 而不是数据本身
+
+
+    // 箭头函数和普通函数的区别
+    // 箭头函数不能用作构造函数 
+    // 箭头函数写法更简洁
+    // 箭头函数自身也没有this 他的this是来自上级作用域中的this
+    // 箭头函数也没有arguments 
+    // 箭头函数也不能使用call bind apply 修改this指向
+    // 箭头函数没有原型
+
+    // 为什么产生跨域问题？
+    // 因为同源策略规定  端口号 域名 协议 这个三个有一个不通就会产生跨域
+    // 如何解决跨域
+    // 前端自己代理
+    // 后端设置cors 
+    // jsonp 动态插入一个script 标签  只能是get请求
+
+    // 说一下vue2 数据同步的原理
+    // 使用了Object.defineProperty() 对data函数中返回的对象里的属性进行get set监听
+    // 缺点是 只能监听已存在的属性  新增的属性不能监听  所以官方增加了 $Set 和 $delete
+    // vue3使用了 Proxy代理整个对象 而非监听对象中的属性  对对象进行操作都可以被监听到
+
+
+    // new 操作符做了些什么
+    // 1 创建了一个对象
+    // 2 把这个对象的隐式原型指向了这个构造函数的prototype
+    // 3 将this 指向这个对象
+    // 4 返回这个实例对象
+
+    // get 和post 请求的区别
+    // get是明文传输  post是密文传输
+    // get请求会暴露在地址栏  post请求是在请求报文中
+    // get请求有长度限制  post没有
+    // get请求参数会保存在浏览器历史记录中  post不会
+    // get请求
+
+
+    // 使用intersectionObserver手写图片懒加载
+    // const img = document.querySelector('img')
+    // const observer = new IntersectionObserver(val => {
+    //     console.log(val[0].intersectionRatio)
+    //     if (val[0].intersectionRatio > 0) {
+    //         img.src = 'https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac95b0b87cf64096a78bdacc9e811dc8~tplv-k3u1fbpfcp-no-mark:100:100:100:100.awebp?'
+    //     }
+    // })
+
+    // observer.observe(img)
+
+    // js如何判断一个数组
+    // 1 Array.isArray()
+    // 2 arr.constructor.prototype==Array.prototype
+    // 3instanceof
+
+    // 跨页面传输信息方式
+
+    // 广播  
+    // 发送方
+    // new BroadcastChannel("my-channel").postMessage('你好啊  我在想你发送消息');
+    // 接收方 广播频道名必须一样 否则接收不到
+    // new BroadcastChannel("my-channel").addEventListener("message", e => {
+    //     console.log(e.data)
+    // })
+
+    // localStorage
+    // 发送方
+    // window.localStorage.setItem('names', '等不到天黑，烟火不会太完美')
+    // 接收方
+    // window.addEventListener('storage', e => {
+    //     console.log(e.key, e.newValue)
+    // })
+ 
+ 
 
 </script>
