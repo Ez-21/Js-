@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./switch.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    label {
+        position: relative;
+        caret-color: transparent;
+        cursor: pointer;
+    }
+
+    .box {
+        width: 80px;
+        height: 35px;
+        background-color: aliceblue;
+        border-radius: 35px;
+    }
+
+    i {
+        position: absolute;
+        left: 0px;
+        top: 0;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: yellowgreen;
+        transition: all 0.5s;
+        cursor: pointer;
+        transform: scale(.8);
+    }
+
+    label input:checked~i {
+        left: 40px;
+    }
+
+    label input:checked~div {
+        background-color: blueviolet;
+    }
+</style>
+
+<body>
+    <label for="check">
+        <input type="checkbox" hidden id="check">
+        <div class="box"></div>
+        <i></i>
+    </label>
+    <p></p>
+    <div>
+        <switch-box />
+    </div>
+</body>
+
+</html>

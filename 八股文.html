@@ -315,7 +315,7 @@
     //    return obj
     // }
 
-    // 构造函数模式 
+    // 构造函数模式
     // function AddObj(name, age) {
     //     this.name = name
     //     this.age = age
@@ -343,10 +343,10 @@
     // bind 返回一个更改this指向的新函数
 
     // 解释下js中的原型
-    //  构造函数中有一个prototype属性  这个属性值是一个对象 由这个构造函数实例化的对象可以共享里面的属性和方法 
+    //  构造函数中有一个prototype属性  这个属性值是一个对象 由这个构造函数实例化的对象可以共享里面的属性和方法
     //  实例化的对象 里有一个__proto__的属性  这是一个指针 指向了它的构造函数的原型对象
 
-    //原型链 
+    //原型链
     // 在一个对象中使用一个属性或者方法的时候会首先在自身内部查找 如果没有找到就向它的原型对象上查找如果还没有找到就在它的原型对象上还没找到 就继续向上一直找下去 这个就是原型链的概念
 
     // js获取原型的方法
@@ -365,20 +365,20 @@
     // 可以使用addEverntListener()第三个参数控制元素捕获还是冒泡
 
     // 事件委托
-    // 是因为 冒泡的存在  所以我们可以将 子节点的监听事件 绑定到父节点上 
+    // 是因为 冒泡的存在  所以我们可以将 子节点的监听事件 绑定到父节点上
 
     // js中的数组对象字符串有哪些原生方法
     // 数组有  push pop unshift shift map forEach every some  find findIndex filter  join splice reverse sort at with copyWithin
-    // 字符串有 splice substr substring trim trimleft trimright padStart padend toUpperCase tolowerCase includes  search 
+    // 字符串有 splice substr substring trim trimleft trimright padStart padend toUpperCase tolowerCase includes  search
     // 对象有 Object.create Object.getPrototypeOf Object.setPrototypeOf Object.is Object.assgin Object.defineProperty Object.hasOwn()  Object.getOwnproperty() Object.isSeal Object.keys  Object.value Object.formEntries Object.freeze Object.isisFrozen
 
     // arguments 是什么
     // 函数的传参 是一个类数组对象
 
-    // var let const 
+    // var let const
     // var 声明的变量 会成为window上的属性
     // var 可以在用意个作用域下重复声明同一个变量
-    // var 没有块级作用域 
+    // var 没有块级作用域
     // var 具有变量提升
     // let 和 const 具有作用域死区 声明前不能使用
     // let 不能在同一作用域下重复声明一个变量
@@ -386,10 +386,10 @@
 
 
     // 箭头函数和普通函数的区别
-    // 箭头函数不能用作构造函数 
+    // 箭头函数不能用作构造函数
     // 箭头函数写法更简洁
     // 箭头函数自身也没有this 他的this是来自上级作用域中的this
-    // 箭头函数也没有arguments 
+    // 箭头函数也没有arguments
     // 箭头函数也不能使用call bind apply 修改this指向
     // 箭头函数没有原型
 
@@ -397,7 +397,7 @@
     // 因为同源策略规定  端口号 域名 协议 这个三个有一个不通就会产生跨域
     // 如何解决跨域
     // 前端自己代理
-    // 后端设置cors 
+    // 后端设置cors
     // jsonp 动态插入一个script 标签  只能是get请求
 
     // 说一下vue2 数据同步的原理
@@ -438,7 +438,7 @@
 
     // 跨页面传输信息方式
 
-    // 广播  
+    // 广播
     // 发送方
     // new BroadcastChannel("my-channel").postMessage('你好啊  我在想你发送消息');
     // 接收方 广播频道名必须一样 否则接收不到
@@ -453,7 +453,26 @@
     // window.addEventListener('storage', e => {
     //     console.log(e.key, e.newValue)
     // })
- 
- 
+
+    // 浏览器的渲染机制可以分为以下几个步骤：
+
+    // 构建 DOM 树
+    // 当浏览器接收到 HTML 文档时，会根据 HTML 标记构建 DOM 树。DOM 树是由 HTML 元素及其关系组成的树形结构，它表示了文档的结构和内容。
+        
+    // 构建 CSSOM 树
+    // 浏览器在解析 HTML 文档的同时，也会解析 CSS 样式表，构建 CSSOM 树。CSSOM 树是由 CSS 样式及其关系组成的树形结构，它表示了文档的样式信息。
+        
+    // 合并 DOM 树和 CSSOM 树，生成渲染树
+    // 浏览器在构建完 DOM 树和 CSSOM 树后，会将它们合并起来，生成渲染树。渲染树包含了需要渲染的节点及其样式信息，但不包含对于渲染无关的节点，如 <head>、<script>、display:none 等。
+    
+    // 布局
+    // 渲染树生成后，浏览器会对每个节点进行布局，确定每个节点在屏幕上的位置和大小。布局的过程也被称为回流（reflow），它比较耗费时间和计算资源，因此应尽量避免频繁的回流。
+    
+    // 绘制
+    // 在完成布局之后，浏览器会将渲染树绘制到屏幕上。绘制的过程也被称为重绘（repaint），它比较快速，但如果频繁地进行重绘，也会对性能产生一定的影响。
+    
+    // 需要注意的是，上述步骤并不是严格按照顺序执行的，浏览器可能会对它们进行优化和并行化处理，以提高渲染的效率和速度。
+    
+    // 总之，浏览器的渲染机制是由构建 DOM 树、构建 CSSOM 树、合并 DOM 树和 CSSOM 树、布局和绘制等过程组成的。了解浏览器的渲染机制可以帮助我们更好地优化页面性能和体验。
 
 </script>

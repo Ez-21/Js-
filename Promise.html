@@ -9,11 +9,16 @@
 </head>
 
 <body>
-
+    <div onclick="ck(123)">
+        123
+    </div>
 </body>
 
 </html>
 <script>
+    function ck(val){
+        console.log(val)
+    }
     // Promise 篇章
     // promise 是为了解决异步问题而产生的的
 
@@ -50,7 +55,7 @@
     // async 与 await 
     // 他们是promise的语法糖 
     // async 可以将普通函数修饰为promise resolve状态
-    // await 必须放在 async 内的函数中  可以修饰promise 并且拿到他们的结果值 
+    // await意为等待  必须放在 async 内的函数中  可以修饰promise 并且拿到他们的结果值 
     // 必须等待 await修饰的的promise 得到返回值后 再继续执行代码 用来达到同步效果
     // async function fun(){
     //     var val = await Promise.resolve(500)
